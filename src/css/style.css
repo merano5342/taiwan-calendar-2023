@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+body {
+  top: 0;
+  height: 100%;
+}
+
+@layer base {
+  .app > div > div {
+    @apply text-darkPurple;
+  }
+  [data-holiday=true] {
+    @apply bg-softRed text-white;
+  }
+}/*# sourceMappingURL=style.css.map */

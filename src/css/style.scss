@@ -1,0 +1,116 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+
+body {
+  top: 0;
+  height: 100%;
+}
+
+@layer base {
+  .wrapper {
+    @apply text-darkPurple;
+    font-family: 'Lato', sans-serif;
+    color: #3c3c4d;
+    font-weight: 700;
+  }
+
+  [data-holiday="true"] {
+    @apply bg-softRed text-white;
+  }
+
+
+  .day {
+    cursor: pointer;
+    position: relative;
+
+    &[data-highlight="holiday"] {
+      outline-offset: 2px;
+      outline: #ED6A5A dashed 1.2px;
+    }
+
+    &[data-highlight="work"] {
+      @apply border-2 border-dashed border-cyan;
+    }
+
+    .day-description {
+      position: absolute;
+      width: 100px;
+      display: none;
+      left: -20px;
+
+    }
+
+    &:hover {
+      .day-description {
+        display: block;
+
+        &::after {
+          position: absolute;
+          top: -20px;
+          right: 40px;
+          content: '';
+          width: 0px;
+          height: 0px;
+          border-style: solid;
+          border-width: 12px;
+          border-color: transparent transparent #f6f1aa transparent;
+        }
+      }
+    }
+  }
+
+  .cal {
+    &[data-scale="s"] {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto;
+    }
+
+    &[data-scale="m"] {
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: auto;
+      grid-gap: 40px;
+    }
+  }
+
+  .toggle-box {
+    @apply rounded-full bg-veryPaleOrange grid grid-cols-2;
+    width: 120px;
+    height: 54px;
+    text-align: center;
+
+
+    .toggle {
+      border-radius: 100px;
+      margin: 6px;
+
+      &[data-active="true"] {
+        @apply bg-softRed text-white;
+        transition: 0.3s ease all;
+      }
+    }
+  }
+
+  .month {
+    &[data-scale="s"] {
+      margin-right: 24px;
+    }
+
+    .month-description {
+      &[data-scale="m"] {
+        display: none;
+      }
+    }
+  }
+
+  .day-description-1 {
+    display: none;
+
+    &[data-scale="s"] {
+      display: block;
+    }
+  }
+
+}
